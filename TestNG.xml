@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="TestSuite" thread-count="4" parallel="tests">
+    <parameter name="WAIT" value="60"/>
+    <parameter name="ENV" value="QA"/>
+    <parameter name="BROWSER" value="CHROME"/>
+
+    <parameter name="password" value="secret_sauce"/>
+    <parameter name="username" value="standard_user"/>
+    <parameter name="errorMessage" value=""/>
+
+    <test enabled="true" name="Login - Standard User">
+        <parameter name="hi" value="hi"/>
+
+        <classes>
+            <class name="TestExample"/>
+        </classes>
+    </test>
+    <test enabled="false" name="Login - Locked out user">
+        <parameter name="username" value="locked_out_user"/>
+        <parameter name="errorMessage" value="Epic sadface: Sorry, this user has been locked out."/>
+
+        <classes>
+            <class name="TestExample"/>
+        </classes>
+    </test>
+    <test enabled="true" name="Login - Wrong username">
+        <parameter name="username" value="Test"/>
+        <parameter name="errorMessage" value="Epic sadface: Username and password do not match any user in this service"/>
+
+        <classes>
+            <class name="TestExample"/>
+        </classes>
+    </test>
+    <test enabled="true" name="Login - Wrong password">
+        <parameter name="password" value="secret_sauce2"/>
+        <parameter name="errorMessage" value="Epic sadface: Username and password do not match any user in this service"/>
+
+        <classes>
+            <class name="TestExample"/>
+        </classes>
+    </test>
+
+</suite>
